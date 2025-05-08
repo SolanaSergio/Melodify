@@ -1,0 +1,255 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme - Monochromatic Blue with Subtle Accents */
+    --background: 210 30% 98%;
+    --foreground: 210 40% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 210 40% 12%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 210 40% 12%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 50% 60%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 210 20% 92%;
+    --muted-foreground: 210 40% 40%;
+
+    --accent: 210 70% 55%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 210 20% 90%;
+    --input: 210 20% 90%;
+    --ring: 210 100% 50%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* Dark theme - Deep Blue & Teal */
+    --background: 220 40% 10%;
+    --foreground: 210 20% 98%;
+
+    --card: 220 40% 13%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 220 40% 13%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 195 80% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 70% 55%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 30% 20%;
+    --muted-foreground: 210 20% 70%;
+
+    --accent: 160 80% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 70% 50%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 220 30% 20%;
+    --input: 220 30% 20%;
+    --ring: 195 80% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Add subtle gradient to light theme background */
+  body:not(.dark) {
+    background-image: linear-gradient(to bottom right, hsl(var(--background)), hsl(var(--background)), hsl(210 40% 96%));
+    background-attachment: fixed;
+  }
+
+  /* Add subtle gradient to dark theme background */
+  body.dark {
+    background-image: linear-gradient(to bottom right, hsl(var(--background)), hsl(220 45% 8%), hsl(220 50% 6%));
+    background-attachment: fixed;
+  }
+}
+
+/* Custom scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-background/50 rounded-full;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/50 rounded-full transition-colors;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/80;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-primary/40 rounded-full transition-colors;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/60;
+}
+
+/* Custom font styling */
+@layer components {
+  .heading-1 {
+    @apply text-4xl font-bold tracking-tight;
+  }
+
+  .heading-2 {
+    @apply text-3xl font-semibold tracking-tight;
+  }
+
+  .heading-3 {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+
+  .heading-4 {
+    @apply text-xl font-semibold tracking-tight;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .dark .gradient-text {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  .player-controls {
+    @apply flex items-center justify-center gap-4 p-2;
+  }
+
+  .player-button {
+    @apply rounded-full p-2 text-foreground/80 hover:bg-accent/10 hover:text-accent transition-all;
+  }
+
+  .player-button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 rounded-full p-3;
+  }
+
+  .nav-item {
+    @apply flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium text-foreground/70 transition-colors hover:text-foreground hover:bg-accent/10;
+  }
+
+  .nav-item-active {
+    @apply bg-primary/20 text-primary hover:bg-primary/20 hover:text-primary;
+  }
+
+  .dark .nav-item-active {
+    @apply bg-primary/20 text-primary hover:bg-primary/20 hover:text-primary;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-md hover:-translate-y-1;
+  }
+
+  /* Enhanced card styling for light theme */
+  :not(.dark) .card {
+    @apply bg-gradient-to-br from-white to-background/90 shadow-sm;
+  }
+
+  :not(.dark) .card-hover {
+    @apply hover:shadow-md transition-shadow;
+  }
+
+  /* Enhanced card styling for dark theme */
+  .dark .card {
+    @apply bg-gradient-to-br from-card to-background shadow-md border-border/50;
+  }
+
+  .dark .card-hover {
+    @apply hover:shadow-lg hover:border-primary/20 transition-all;
+  }
+
+  /* Radio animations */
+  @keyframes sound-wave {
+    0% {
+      height: 30%;
+    }
+    20% {
+      height: 60%;
+    }
+    40% {
+      height: 40%;
+    }
+    60% {
+      height: 80%;
+    }
+    80% {
+      height: 50%;
+    }
+    100% {
+      height: 30%;
+    }
+  }
+
+  .animate-sound-wave {
+    animation: sound-wave 1.5s ease-in-out infinite;
+  }
+
+  @keyframes progress {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  .animate-progress {
+    animation: progress 2s linear infinite;
+  }
+
+  @keyframes pulse-slow {
+    0% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 0.8;
+    }
+    100% {
+      opacity: 0.5;
+    }
+  }
+
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+
+  @keyframes ping {
+    75%, 100% {
+      transform: scale(2);
+      opacity: 0;
+    }
+  }
+
+  .animate-ping {
+    animation: ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+}

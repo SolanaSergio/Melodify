@@ -1,0 +1,1 @@
+This folder contains radio station images. In a real application, you would have actual images for each radio station.
