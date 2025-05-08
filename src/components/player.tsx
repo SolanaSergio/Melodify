@@ -39,7 +39,7 @@ export function Player() {
   };
 
   return (
-    <div className="sticky bottom-0 z-10 border-t bg-card">
+    <div className="sticky bottom-0 z-10 border-t bg-card md:block hidden">
       <div className="grid grid-cols-3 items-center px-4 py-2">
         {/* Media info */}
         <div className="flex items-center gap-3">
@@ -225,10 +225,91 @@ export function Player() {
             />
           </div>
 
-          <Button variant="ghost" size="icon" className="player-button">
-            <Maximize2 className="h-4 w-4" />
+          <Button
+            variant="ghost"
+            size="icon"
+            className="player-button"
+            asChild
+            disabled={!currentStation}
+          >
+            <Link href="/player">
+              <Maximize2 className="h-4 w-4" />
+            </Link>
           </Button>
         </div>
+      </div>
+
+      {/* Mobile Mini Player - only visible on mobile */}
+      <div className="md:hidden fixed bottom-16 left-0 right-0 z-10 bg-card border-t p-2">
+        {currentStation ? (
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className={`relative h-10 w-10 overflow-hidden rounded-md bg-gradient-to-br ${currentStation.color} ${currentStation.secondaryColor}`}>
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <Radio className="h-5 w-5 text-white/80" />
+                </div>
+                {isPlaying && (
+                  <div className="absolute top-0 left-0 w-full h-1 bg-primary animate-pulse"></div>
+                )}
+              </div>
+              <div>
+                <h4 className="text-xs font-medium line-clamp-1">{currentStation.name}</h4>
+                <p className="text-[10px] text-muted-foreground line-clamp-1">
+                  {currentStation.genre}
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <Button
+                className="h-8 w-8 rounded-full bg-primary text-primary-foreground"
+                size="icon"
+                onClick={togglePlayback}
+              >
+                {isPlaying ? (
+                  <Pause className="h-4 w-4" />
+                ) : (
+                  <Play className="h-4 w-4 ml-0.5" />
+                )}
+              </Button>
+
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8 rounded-full"
+                asChild
+              >
+                <Link href="/player">
+                  <Maximize2 className="h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-2">
+              <div className="relative h-10 w-10 overflow-hidden rounded-md bg-muted">
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/30 to-accent/30" />
+              </div>
+              <div>
+                <h4 className="text-xs font-medium line-clamp-1">No media playing</h4>
+                <p className="text-[10px] text-muted-foreground line-clamp-1">
+                  Select a radio station or song
+                </p>
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <Button
+                className="h-8 w-8 rounded-full bg-muted text-muted-foreground"
+                size="icon"
+                disabled
+              >
+                <Play className="h-4 w-4 ml-0.5" />
+              </Button>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

@@ -50,15 +50,15 @@ export default function Home() {
           <ScrollArea>
             <div className="flex space-x-4 pb-4">
               {[...Array(8)].map((_, i) => (
-                <Card key={i} className="min-w-[220px] card-hover">
-                  <CardContent className="p-4">
+                <Card key={i} className="min-w-[160px] sm:min-w-[180px] md:min-w-[220px] card-hover">
+                  <CardContent className="p-3 sm:p-4">
                     <AspectRatio ratio={1 / 1} className="relative mb-3 bg-muted overflow-hidden rounded-md">
                       <div className={`absolute inset-0 bg-gradient-to-br ${i % 4 === 0 ? 'from-primary/40 to-accent/40' : i % 4 === 1 ? 'from-secondary/40 to-primary/40' : i % 4 === 2 ? 'from-accent/40 to-secondary/40' : 'from-muted/40 to-accent/30'}`} />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <Music className="h-12 w-12 text-background/80" />
+                        <Music className="h-10 w-10 md:h-12 md:w-12 text-background/80" />
                       </div>
                     </AspectRatio>
-                    <h3 className="font-semibold line-clamp-1">
+                    <h3 className="font-semibold line-clamp-1 text-sm sm:text-base">
                       {["Chill Vibes", "Workout Mix", "Focus Flow", "Party Starters", "Indie Discoveries", "Classic Hits", "Mood Boosters", "Study Beats"][i]}
                     </h3>
                     <p className="text-xs text-muted-foreground line-clamp-2 mt-1">
@@ -84,15 +84,15 @@ export default function Home() {
           <ScrollArea>
             <div className="flex space-x-4 pb-4">
               {[...Array(8)].map((_, i) => (
-                <Card key={i} className="min-w-[160px] card-hover bg-card">
-                  <CardContent className="p-4 flex flex-col items-center text-center">
+                <Card key={i} className="min-w-[120px] sm:min-w-[140px] md:min-w-[160px] card-hover bg-card">
+                  <CardContent className="p-3 sm:p-4 flex flex-col items-center text-center">
                     <AspectRatio ratio={1 / 1} className="relative w-full mb-3 overflow-hidden rounded-full">
                       <div className={`absolute inset-0 bg-gradient-to-br ${i % 4 === 0 ? 'from-primary/40 to-accent/40' : i % 4 === 1 ? 'from-secondary/40 to-primary/40' : i % 4 === 2 ? 'from-accent/40 to-secondary/40' : 'from-muted/40 to-accent/30'}`} />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <Mic className="h-8 w-8 text-background/80" />
+                        <Mic className="h-6 w-6 sm:h-7 sm:w-7 md:h-8 md:w-8 text-background/80" />
                       </div>
                     </AspectRatio>
-                    <h3 className="font-semibold line-clamp-1">
+                    <h3 className="font-semibold line-clamp-1 text-sm sm:text-base">
                       {["Artist One", "Artist Two", "Artist Three", "Artist Four", "Artist Five", "Artist Six", "Artist Seven", "Artist Eight"][i]}
                     </h3>
                     <p className="text-xs text-muted-foreground mt-1">Artist</p>
@@ -113,20 +113,20 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3 md:gap-4">
             {[...Array(4)].map((_, i) => (
               <Card key={i} className="card-hover">
-                <CardContent className="p-4">
-                  <div className="flex gap-3">
-                    <AspectRatio ratio={1 / 1} className="relative h-16 w-16 flex-shrink-0 overflow-hidden rounded-md">
+                <CardContent className="p-3 sm:p-4">
+                  <div className="flex gap-2 sm:gap-3">
+                    <AspectRatio ratio={1 / 1} className="relative h-14 w-14 sm:h-16 sm:w-16 flex-shrink-0 overflow-hidden rounded-md">
                       <div className={`absolute inset-0 bg-gradient-to-br ${i % 4 === 0 ? 'from-primary/40 to-accent/40' : i % 4 === 1 ? 'from-secondary/40 to-primary/40' : i % 4 === 2 ? 'from-accent/40 to-secondary/40' : 'from-muted/40 to-accent/30'}`} />
                       <div className="absolute inset-0 flex items-center justify-center">
-                        <Headphones className="h-6 w-6 text-background/80" />
+                        <Headphones className="h-5 w-5 sm:h-6 sm:w-6 text-background/80" />
                       </div>
                     </AspectRatio>
 
                     <div>
-                      <h3 className="font-semibold line-clamp-1">
+                      <h3 className="font-semibold line-clamp-1 text-sm sm:text-base">
                         {["Harmony", "Echoes", "Rhythms", "Melodies"][i]}
                       </h3>
                       <p className="text-xs text-muted-foreground mt-1 line-clamp-1">
@@ -190,34 +190,34 @@ export default function Home() {
             </Button>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4 md:gap-6">
             {[...Array(3)].map((_, i) => (
               <Card key={i} className="card-hover">
-                <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
-                    <BarChart3 className="h-5 w-5 text-primary" />
+                <CardHeader className="p-3 sm:p-6">
+                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
+                    <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
                     {["Top 50 Global", "Trending Now", "New Releases"][i]}
                   </CardTitle>
                 </CardHeader>
-                <CardContent>
+                <CardContent className="px-3 sm:px-6 pb-3 sm:pb-6">
                   <ul className="space-y-2">
                     {[...Array(5)].map((_, j) => (
-                      <li key={j} className="flex items-center gap-3">
-                        <span className="text-xl font-bold text-muted-foreground w-5">
+                      <li key={j} className="flex items-center gap-2 sm:gap-3">
+                        <span className="text-lg sm:text-xl font-bold text-muted-foreground w-4 sm:w-5">
                           {j + 1}
                         </span>
-                        <AspectRatio ratio={1 / 1} className="relative h-10 w-10 flex-shrink-0 overflow-hidden rounded-md">
+                        <AspectRatio ratio={1 / 1} className="relative h-8 w-8 sm:h-10 sm:w-10 flex-shrink-0 overflow-hidden rounded-md">
                           <div className={`absolute inset-0 bg-gradient-to-br ${(i + j) % 4 === 0 ? 'from-primary/40 to-accent/40' : (i + j) % 4 === 1 ? 'from-secondary/40 to-primary/40' : (i + j) % 4 === 2 ? 'from-accent/40 to-secondary/40' : 'from-muted/40 to-accent/30'}`} />
                         </AspectRatio>
                         <div className="min-w-0">
-                          <p className="font-medium text-sm truncate">Song Title {j + 1}</p>
+                          <p className="font-medium text-xs sm:text-sm truncate">Song Title {j + 1}</p>
                           <p className="text-xs text-muted-foreground truncate">Artist {j + 1}</p>
                         </div>
                       </li>
                     ))}
                   </ul>
                 </CardContent>
-                <CardFooter>
+                <CardFooter className="px-3 sm:px-6 pb-3 sm:pb-6 pt-0">
                   <Button variant="outline" size="sm" className="w-full">
                     See Full Chart
                   </Button>

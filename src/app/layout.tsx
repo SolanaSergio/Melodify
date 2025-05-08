@@ -20,6 +20,12 @@ const fontHeading = FontHeading({
 export const metadata: Metadata = {
   title: "Melodify - Your Music, Your Way",
   description: "A beautiful music streaming platform with a modern touch",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+  },
 };
 
 export default function RootLayout({
